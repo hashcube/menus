@@ -12,8 +12,9 @@ import menus.views.components.DialogBackgroundView as DialogBackgroundView;
 exports = Class(DialogBackgroundView, function (supr) {
 	this.init = function (opts) {
 		// Get the height from opts before the super init is executed!
-		var width = this._width = opts.width || GC.app.baseWidth - 80;
-		var height = this._height = opts.height || 400;
+		var width = opts.baseWidth || (GC.app.base_width || GC.app.baseWidth) - 80;
+		// 320 because min phone height is 320px
+		var height = this._height = opts.height || 320;
 
 		supr(this, 'init', arguments);
 
@@ -24,8 +25,8 @@ exports = Class(DialogBackgroundView, function (supr) {
 		// The dialog containing the actual content...
 		this._dialogView = new BoxDialogView({
 			superview: this._dialogContainerView,
-			x: (GC.app.baseWidth - width) * 0.5,
-			y: (GC.app.baseHeight - height) * 0.5,
+			x: ((GC.app.baseWidth || GC.app.base_width) - width) * 0.5,
+			y: ((GC.app.baseHeight || GC.app.base_height) - height) * 0.5,
 			width: width,
 			height: height,
 			fontFamily: contentStyle.FONT_FAMILY,

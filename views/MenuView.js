@@ -16,7 +16,7 @@ exports = Class(DialogBackgroundView, function (supr) {
 
 		this.canHandleEvents(true);
 
-		var width = this.baseWidth - 80;
+		var width = (this.baseWidth || this.base_width || this.style.width) - 80;
 		var height = 140;
 		var items = opts.items;
 		for (var i = 0; i < items.length; i++) {
@@ -34,8 +34,8 @@ exports = Class(DialogBackgroundView, function (supr) {
 
 		this._dialogView = new BoxDialogView({
 			superview: this._dialogContainerView,
-			x: (this.baseWidth - width) * 0.5,
-			y: this.baseHeight * 0.5 - height * 0.5,
+			x: ((this.baseWidth || this.base_width || this.style.width) - width) * 0.5,
+			y: (this.baseHeight || this.base_height || this.style.height) * 0.5 - height * 0.5,
 			width: width,
 			height: height,
 			title: opts.title,

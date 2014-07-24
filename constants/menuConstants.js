@@ -110,7 +110,6 @@ constants.TUTORIAL = {
 constants.MENU_TEXT = {
 	FONT_SIZE: 24,
 	PADDING: [0, 0, 0, 0],
-	STROKE_WIDTH: 0,
 	ALIGN: 'center'
 };
 
@@ -122,7 +121,6 @@ constants.MENU_ITEM = {
 	MARGIN_RIGHT: 30,
 	MARGIN_BOTTOM: -4,
 	HEIGHT: 80,
-	STROKE_WIDTH: 3
 };
 
 constants.TITLE = {
@@ -152,7 +150,7 @@ constants.BUTTONS = {
 	}
 };
 
-if (CONFIG.browser && CONFIG.browser.menus) {
+if ((CONFIG.browser && CONFIG.browser.menus) || (CONFIG.android && CONFIG.android.menus) || (CONFIG.ios && CONFIG.ios.menus)) {
 	style = JSON.parse(CACHE[CONFIG.browser.menus + '.json']);
 }
 

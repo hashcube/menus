@@ -25,7 +25,7 @@ var TutorialSpriteView = Class(SpriteView, function (supr) {
 exports = Class(DialogBackgroundView, function (supr) {
 	this.init = function (opts) {
 		// Get the height from opts before the super init is executed!
-		var height = opts.height || GC.app.baseHeight * 0.8;
+		var height = opts.height || (GC.app.baseHeight || GC.app.base_height) * 0.8;
 
 		supr(this, 'init', arguments);
 
@@ -35,8 +35,8 @@ exports = Class(DialogBackgroundView, function (supr) {
 		this._dialogView = new BoxDialogView({
 			superview: this._dialogContainerView,
 			x: 40,
-			y: GC.app.baseHeight * 0.5 - height * 0.5,
-			width: GC.app.baseWidth - 80,
+			y: (GC.app.baseHeight || GC.app.base_height) * 0.5 - height * 0.5,
+			width: (GC.app.baseWidth || GC.app.base_width) - 80,
 			height: height,
 			fontFamily: contentStyle.FONT_FAMILY,
 			fontSize: contentStyle.FONT_SIZE,
