@@ -9,7 +9,7 @@ background, the demo uses a simple gradient as a background.
 ## Modals
 
 A modal is a menu which is shown on top of another view, if a menu
-is shown as a model then the user is required to take action. Usually 
+is shown as a model then the user is required to take action. Usually
 the backgound is darkened to signify that the only available options
 are on the active modal.
 
@@ -22,7 +22,7 @@ On the title bar there can be a back button on the left side or
 a close button on the right side.
 
 The close button is usually displayed when the menus is shown as
-a modal, the back button is usually used to navigate through a menu 
+a modal, the back button is usually used to navigate through a menu
 tree.
 
 Dialogs -like confirm or alert- have one or more buttons on the bottom
@@ -121,9 +121,19 @@ All element which make up the menus and dialogs are based on 9-slice images.
 
 ## Configuration
 
-Many of the look and behaviour properties can be configured with a global configuration file,
-`src.constants.menuConstants.js`.
-All images names and paths which are used in the menu system are defined here.
+Basic styles are defined in `src.constants.menuConstants.js`.
+
+If you want to customize more add `browser/menus` field to your manifest.json
+	`Make sure path points to a valid json file`
+
+~~~
+	...,
+	"browser": {
+		"menus": "path/to/your/styles"
+	},
+	...
+
+~~~
 
 ### DialogBackgroundView Class
 
@@ -164,14 +174,14 @@ Parameters
  + `superview {View}` ---The view which contains this menu, could be a menu background or the game view.
  + `title {string}` ---The title displayed in the title bar of the menu
  + `items {array}` ---A list of menu items, the structure of the item is:
-  + `item {string}` ---The display title of the item
-  + `action {string|function}` ---If it's a string then the value will be emitted else the function is invoked on clicking.
-  + `persist {boolean}` ---Optional, If this values is `true` then the menu will not be hidden when the option is clicked.
-  + `text {string}` ---Optional, display a text instead of a clickable option.
-  + `image {string}` ---Optional, the path to an image to display instead of a clickable option.
-  + `width {number} = 70` ---Optional, the width of the image.
-  + `height {number} = 70` ---Optional, the height of the image.
-  + `align {string}` ---Optional, the horizontal alignment of the text or image, the default is `center` options are: `left`, `center` and `right`.
+	+ `item {string}` ---The display title of the item
+	+ `action {string|function}` ---If it's a string then the value will be emitted else the function is invoked on clicking.
+	+ `persist {boolean}` ---Optional, If this values is `true` then the menu will not be hidden when the option is clicked.
+	+ `text {string}` ---Optional, display a text instead of a clickable option.
+	+ `image {string}` ---Optional, the path to an image to display instead of a clickable option.
+	+ `width {number} = 70` ---Optional, the width of the image.
+	+ `height {number} = 70` ---Optional, the height of the image.
+	+ `align {string}` ---Optional, the horizontal alignment of the text or image, the default is `center` options are: `left`, `center` and `right`.
 
 ~~~
 import menus.views.MenuView as MenuView;
@@ -216,9 +226,9 @@ Parameters
  + `height {number} = 400` ---Optional, the width of the dialog.
  + `modal {boolean}` ---Optional, if true then the background will be darkened.
  + `buttons {array}` ---A list of buttons displayed at the bottom of the dialog, the structure of the button item is:
-  + `title {string}` ---The title of the button.
-  + `width {number}` ---The horizontal size of the button.
-  + `style {string}` ---A string representing the style of the button, the styles are configured in `src.constants.menuConstants`.
+	+ `title {string}` ---The title of the button.
+	+ `width {number}` ---The horizontal size of the button.
+	+ `style {string}` ---A string representing the style of the button, the styles are configured in `src.constants.menuConstants`.
 
 ~~~
 import menus.views.TextDialogView as TextDialogView;
@@ -280,22 +290,22 @@ Parameters
  + `superview {View}` ---The view which contains this menu, could be a menu background or the game view.
  + `title {string}` ---The title displayed in the title bar of the menu.
  + `style {object}` ---Optional, the default style for texts and titles, the structure is as follows:
-  + `title {object}` ---Optional, the default title style.
-   + `fontFamily {string}` ---Optional, the font family of the title.
-   + `size {number}` ---Optional, the font size of the title.
-   + `color {string}` ---Optional, the color of the title.
-   + `align {string}` ---Optional, the alignment of the title, valid values are: 'left', 'center' or 'right'
-  + `text {object}` ---Optional, the default text style.
-   + `fontFamily {string}` ---Optional, the font family of the text.
-   + `size {number}` ---Optional, the font size of the text.
-   + `color {string}` ---Optional, the color of the text.
-   + `align {string}` ---Optional, the alignment of the text, valid values are: 'left', 'center', 'justify' or 'right'
+	+ `title {object}` ---Optional, the default title style.
+	 + `fontFamily {string}` ---Optional, the font family of the title.
+	 + `size {number}` ---Optional, the font size of the title.
+	 + `color {string}` ---Optional, the color of the title.
+	 + `align {string}` ---Optional, the alignment of the title, valid values are: 'left', 'center' or 'right'
+	+ `text {object}` ---Optional, the default text style.
+	 + `fontFamily {string}` ---Optional, the font family of the text.
+	 + `size {number}` ---Optional, the font size of the text.
+	 + `color {string}` ---Optional, the color of the text.
+	 + `align {string}` ---Optional, the alignment of the text, valid values are: 'left', 'center', 'justify' or 'right'
  + `items {array}` ---Optional, a list of settings objects for the page select buttons with the following structure:
-  + `type {string}` ---The type valid values are: 'prev', 'next', 'info' where 'info' shows the current and number of pages.
-  + `title {string}` ---If the type is 'prev' or 'next' then this is used as button title.
-  + `width {number}` ---The width of the items.
-  + `style {string}` ---The styling to apply to the button based on the associated value in `menuConstants`.
-  + `padding {array}` ---The padding to apply to the text on the button if the type is 'prev' or 'next'.
+	+ `type {string}` ---The type valid values are: 'prev', 'next', 'info' where 'info' shows the current and number of pages.
+	+ `title {string}` ---If the type is 'prev' or 'next' then this is used as button title.
+	+ `width {number}` ---The width of the items.
+	+ `style {string}` ---The styling to apply to the button based on the associated value in `menuConstants`.
+	+ `padding {array}` ---The padding to apply to the text on the button if the type is 'prev' or 'next'.
  + `closeCB {function}` ---Optional, if set then a close button will be shown at the right top of the window.
  + `backCB {function}` ---Optional, if set then a back button will be shown at the left top of the window.
  + `pages {array}` ---See examples below.
@@ -342,24 +352,24 @@ If the `text` property is set:
 If the `image` property is set:
  + `image {string}` ---The location of the image.
  + `align {string}` ---Optional, the alignment for the image.
- + `width {number} = 50` ---Optional, the width of the image. 
+ + `width {number} = 50` ---Optional, the width of the image.
  + `height {number} = 50` ---Optional, the height of the image.
  + `backgroundColor {string}` ---Optional, the background color of the image.
 
 If the `view` property is set:
  + `view {view}` ---Has to be `true` to use item as view.
  + `align {string}` ---Optional, the alignment for the image.
- + `width {number} = 50` ---Optional, the width of the image. 
+ + `width {number} = 50` ---Optional, the width of the image.
  + `height {number} = 50` ---Optional, the height of the image.
  + `backgroundColor {string}` ---Optional, the background color of the view.
  + `children {array}` ---Optional, an array of images to with the following -recursive- format:
-  + `image {string}` ---The location of the image.
-  + `x {number} = 0` ---Optional, the x-position relative to the parent view.
-  + `y {number} = 0` ---Optional, the y-position relative to the parent view.
-  + `width {number} = 50` ---Optional, the width of the image. 
-  + `height {number} = 50` ---Optional, the height of the image.
-  + `backgroundColor {string}` ---Optional, the background color of the image.
-  + `children {array}` ---Optional, an array of images.
+	+ `image {string}` ---The location of the image.
+	+ `x {number} = 0` ---Optional, the x-position relative to the parent view.
+	+ `y {number} = 0` ---Optional, the y-position relative to the parent view.
+	+ `width {number} = 50` ---Optional, the width of the image.
+	+ `height {number} = 50` ---Optional, the height of the image.
+	+ `backgroundColor {string}` ---Optional, the background color of the image.
+	+ `children {array}` ---Optional, an array of images.
 
 The following example shows the most basic use of the `DocumentView`, it displays a title and some text:
 

@@ -6,8 +6,8 @@ import menus.constants.menuConstants as menuConstants;
 
 exports = Class(View, function (supr) {
 	this.init = function (opts) {
-		this.baseWidth = opts.baseWidth || GC.app.baseWidth || (opts.superview ? opts.superview.style.width : undefined);
-		this.baseHeight = opts.baseHeight || GC.app.baseHeight || (opts.superview ? opts.superview.style.height : undefined);
+		this.baseWidth = opts.baseWidth || GC.app.baseWidth || GC.app.base_width ||(opts.superview ? opts.superview.style.width : undefined);
+		this.baseHeight = opts.baseHeight || GC.app.baseHeight || GC.app.base_height || (opts.superview ? opts.superview.style.height : undefined);
 
 		// Don't merge but overwrite...
 		opts.x = 0;

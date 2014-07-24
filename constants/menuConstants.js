@@ -1,6 +1,7 @@
 import lib.Enum as Enum;
 
-var constants = {};
+var constants = {},
+	style = {};
 
 constants.transitionMethod = Enum(
 	'NONE',
@@ -12,16 +13,32 @@ constants.transitionMethod = Enum(
 
 constants.BOX_SLICES = {
 	SOURCE_SLICES: {
-		horizontal: {left: 30, center: 10, right: 30},
-		vertical: {top: 30, middle: 10, bottom: 30}
+		horizontal: {
+			left: 30,
+			center: 10,
+			right: 30
+		},
+		vertical: {
+			top: 30,
+			middle: 10,
+			bottom: 30
+		}
 	},
 	DEST_SLICES: undefined
 };
 
 constants.BUTTON_SLICES = {
 	SOURCE_SLICES: {
-		horizontal: {left: 30, center: 10, right: 30},
-		vertical: {top: 30, middle: 10, bottom: 30}
+		horizontal: {
+			left: 30,
+			center: 10,
+			right: 30
+		},
+		vertical: {
+			top: 30,
+			middle: 10,
+			bottom: 30
+		}
 	},
 	DEST_SLICES: undefined
 };
@@ -62,14 +79,13 @@ constants.DIALOG = {
 		}
 	},
 	BUTTON: {
-		HEIGHT: 80,
+		HEIGHT: 50,
 		MARGIN_BOTTOM: 30,
 		MARGIN_RIGHT: 10
 	},
 	CONTENT: {
 		BACKGROUND: 'resources/images/ui/item.png',
-		FONT_FAMILY: 'BPReplay',
-		FONT_SIZE: 36,
+		FONT_SIZE: 24,
 		PADDING: [0, 30, 0, 30],
 		MARGIN_LEFT: 35,
 		MARGIN_RIGHT: 35,
@@ -92,71 +108,50 @@ constants.TUTORIAL = {
 };
 
 constants.MENU_TEXT = {
-	FONT_FAMILY: 'BPReplay',
-	FONT_SIZE: 36,
+	FONT_SIZE: 24,
 	PADDING: [0, 0, 0, 0],
-	COLOR: '#000000',
-	STROKE_COLOR: '#000000',
-	STROKE_WIDTH: 0,
 	ALIGN: 'center'
 };
 
 constants.MENU_ITEM = {
 	BACKGROUND: 'resources/images/ui/buttonItem.png',
-	FONT_FAMILY: 'BPReplay',
-	FONT_SIZE: 36,
+	FONT_SIZE: 24,
 	PADDING: [0, 0, 3, 0],
 	MARGIN_LEFT: 30,
 	MARGIN_RIGHT: 30,
 	MARGIN_BOTTOM: -4,
 	HEIGHT: 80,
-	COLOR: '#000000',
-	STROKE_COLOR: '#000000',
-	STROKE_WIDTH: 3
 };
 
 constants.TITLE = {
 	BACKGROUND: 'resources/images/ui/title.png',
-	FONT_FAMILY: 'BPReplay',
-	FONT_SIZE: 36,
-	COLOR: 'rgb(250, 227, 190)',
-	STROKE_COLOR: '#000000',
-	STROKE_WIDTH: 1
+	FONT_SIZE: 24,
+	COLOR: 'rgb(55,55,55)',
 };
 
 constants.BUTTONS = {
 	BLUE: {
 		UP: 'resources/images/ui/button1Up.png',
 		DOWN: 'resources/images/ui/button1Down.png',
-		FONT_FAMILY: 'BPReplay',
-		FONT_SIZE: 36,
+		FONT_SIZE: 24,
 		COLOR: 'rgb(255, 255, 255)',
-		STROKE_COLOR: 'rgb(73, 154, 203)',
-		STROKE_WIDTH: 6
 	},
 	GREEN: {
 		UP: 'resources/images/ui/button2Up.png',
 		DOWN: 'resources/images/ui/button2Down.png',
-		FONT_FAMILY: 'BPReplay',
-		FONT_SIZE: 36,
+		FONT_SIZE: 24,
 		COLOR: 'rgb(255, 255, 255)',
-		STROKE_COLOR: 'rgb(15, 111, 55)',
-		STROKE_WIDTH: 6
 	},
 	RED: {
 		UP: 'resources/images/ui/button3Up.png',
 		DOWN: 'resources/images/ui/button3Down.png',
-		FONT_FAMILY: 'BPReplay',
-		FONT_SIZE: 36,
+		FONT_SIZE: 24,
 		COLOR: 'rgb(255, 255, 255)',
-		STROKE_COLOR: 'rgb(111, 15, 55)',
-		STROKE_WIDTH: 6
 	}
 };
 
-function setConstants (c) {
-	exports = merge(c, exports);
-	exports.set = setConstants;
+if ((CONFIG.browser && CONFIG.browser.menus) || (CONFIG.android && CONFIG.android.menus) || (CONFIG.ios && CONFIG.ios.menus)) {
+	style = JSON.parse(CACHE[(CONFIG.browser.menus || CONFIG.android.menus || CONFIG.ios.menus) + '.json']);
 }
 
-setConstants(constants);
+exports = merge(style, constants);
