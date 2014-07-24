@@ -151,7 +151,7 @@ constants.BUTTONS = {
 };
 
 if ((CONFIG.browser && CONFIG.browser.menus) || (CONFIG.android && CONFIG.android.menus) || (CONFIG.ios && CONFIG.ios.menus)) {
-	style = JSON.parse(CACHE[CONFIG.browser.menus + '.json']);
+	style = JSON.parse(CACHE[(CONFIG.browser.menus || CONFIG.android.menus || CONFIG.ios.menus) + '.json']);
 }
 
 exports = merge(style, constants);
